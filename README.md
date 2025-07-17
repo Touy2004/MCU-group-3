@@ -17,7 +17,7 @@
 ### **ສາລະບານ**
 * [ບົດນຳ](#ບົດນຳ)
 * [ບົດທີ 1: LED 8x8 DOT Matrix Display](#ບົດທີ-1-LED-8x8-DOT-Matrix-Display)
-* [ບົດທີ 2: Photoresistor (Light Sensor)](#ບົດທີ-2:-PHOTORESISTOR (Light sensor))
+* [ບົດທີ 2: Photoresistor (Light Sensor)](#ບົດທີ-2:-PHOTORESISTOR-Light-sensor)
 * [ບົດທີ 3: PIR Sensor](#chapter3)
 * [ບົດທີ 4: Ultrasonic Sensor](#chapter4)
 * [ບົດທີ 5: LCD](#chapter5)
