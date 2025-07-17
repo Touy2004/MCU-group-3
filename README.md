@@ -16,8 +16,8 @@
 
 ### **ສາລະບານ**
 * [ບົດນຳ](#ບົດນຳ)
-* [ບົດທີ 1: LED 8x8 DOT Matrix Display](#ບົດທີ1)
-* [ບົດທີ 2: Photoresistor (Light Sensor)](#chapter2)
+* [ບົດທີ 1: LED 8x8 DOT Matrix Display](#ບົດທີ-1:-LED-8x8-DOT-Matrix-Display)
+* [ບົດທີ 2: Photoresistor (Light Sensor)](#ບົດທີ-2:-PHOTORESISTOR (Light sensor))
 * [ບົດທີ 3: PIR Sensor](#chapter3)
 * [ບົດທີ 4: Ultrasonic Sensor](#chapter4)
 * [ບົດທີ 5: LCD](#chapter5)
@@ -38,7 +38,7 @@
 
 ---
 
-### **ບົດທີ1: LED 8x8 DOT Matrix Display** {#chapter1}
+### **ບົດທີ 1: LED 8x8 DOT Matrix Display**
 
 **ບົດນຳ**
 ການທົດລອງນີ້ສະແດງໃຫ້ເຫັນວິທີການພື້ນຖານທີ່ສຸດໃນການຄວບຄຸມ Output ດ້ວຍ Arduino, ເຊິ່ງແມ່ນການເຮັດໃຫ້ໄຟ LED ກະພິບ.
@@ -92,7 +92,7 @@ void loop() {
 
 ---
 
-### **ບົດທີ 2: PHOTORESISTOR (Light sensor)** {#chapter2}
+### **ບົດທີ 2: PHOTORESISTOR (Light sensor)**
 **ບົດນຳ**
 ການທົດລອງ Photoresistor ຫຼື LDR (Light Dependent Resistor) ແມ່ນໂຕກວດຈັບແສງ ໂດຍຄ່າຄວາມຕ້ານທານຂອງມັນຈະປ່ຽນແປງໄປຕາມຄວາມແຈ້ງຂອງແສງທີ່ຕົກກະທົບ.
 
