@@ -26,6 +26,8 @@
     * [Lock System](#Midterm-Lock-System)
     * [Sensor Motion](#Midterm-Sensor-Motion)
     * [Automatic Elevator Door](#Midterm-Automatic-Elevator-Door)
+    * [Ultrasonic Radar Display](#Ultrasonic-Radar-Display)
+    * [Flood Alert](#Flood-Alert)
 
 ---
 
@@ -818,3 +820,246 @@ void updateFloorLEDs() {
 4.  **ເຄື່ອນທີ່:** ຫຼັງຈາກປະຕູປິດ, ລະບົບຈະຈຳລອງການເຄື່ອນທີ່ໄປຊັ້ນ 2 (ໄຟ LED ຊັ້ນ 2 ຕິດ).
 5.  **ຮອດຈຸດໝາຍ:** ເມື່ອຮອດຊັ້ນ 2, ປະຕູຈະເປີດເພື່ອໃຫ້ຄົນອອກ, ລໍຖ້າໄລຍະໜຶ່ງ, ແລ້ວປິດປະຕູ.
 6.  **ກັບຄືນ:** ຫຼັງຈາກນັ້ນ, ລິບຈະຈຳລອງການກັບຄືນມາທີ່ຊັ້ນ 1 ເພື່ອລໍຖ້າຮັບໃຊ້ຄົນຕໍ່ໄປ.
+
+---
+
+#### **Midterm: Ultrasonic Radar Display (URD)**
+**ໂດຍ: ທ. ອານຸພັດ ຈິນດາຮັກ**
+
+**ບົດນຳ**
+ວົງຈອນນີ້ແມ່ນການທົດລອງກວດຈັບວັດຖຸທີ່ເຂົ້າມາໃກ້ໂດຍໃຊ້ເຊັນເຊີ Ultrasonic, ເມື່ອກວດຈັບວັດຖຸໄດ້ແລ້ວຈະໃຫ້ LED 8x8 ສະແດງສັນຍາລັກຕາມໄລຍະຫ່າງ.
+
+**ອຸປະກອນ**
+- Microcontroller (Arduino)
+- Bread board
+- Ultrasonic sensor (HC-SR04)
+- 8x8 DOT Matrix Display
+- LED
+- Resistor
+- Jumper
+
+**ການເຊື່ອມຕໍ່ວົງຈອນ**
+- **Ultrasonic Sensor (HC-SR04):**
+    - VCC → 5V
+    - GND → GND
+    - Trig → Pin 7
+    - Echo → Pin 6
+- **8x8 Dot Matrix:**
+    - VCC → 5V
+    - GND → GND
+    - DIN → Pin 11
+    - CS → Pin 10
+    - CLK → Pin 13
+- **LED:**
+    - ຂາບວກ (Anode) → Pin 5
+    - ຂາລົບ (Cathode) → Resistor → GND
+
+![ພາບການເຊື່ອມຕໍ່ຕົວຈິງ](https://i.imgur.com/kGZfV1g.jpeg)
+
+**Code**
+```cpp
+#include <LedControl.h>
+
+// Pin Mapping
+LedControl lc = LedControl(11, 13, 10, 1); // DIN, CLK, CS, Number of devices
+
+#define TRIG_PIN 7
+#define ECHO_PIN 6
+#define LED_PIN 5
+
+void setup() {
+  lc.shutdown(0, false);
+  lc.setIntensity(0, 8);
+  lc.clearDisplay(0);
+
+  pinMode(TRIG_PIN, OUTPUT);
+  pinMode(ECHO_PIN, INPUT);
+  pinMode(LED_PIN, OUTPUT);
+  Serial.begin(115200);
+}
+
+void loop() {
+  long duration;
+  int distance;
+
+  // Trigger ultrasonic pulse
+  digitalWrite(TRIG_PIN, LOW);
+  delayMicroseconds(2);
+  digitalWrite(TRIG_PIN, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG_PIN, LOW);
+
+  // Read echo pulse
+  duration = pulseIn(ECHO_PIN, HIGH);
+  distance = duration * 0.034 / 2;
+
+  Serial.print("Distance: ");
+  Serial.print(distance);
+  Serial.println(" cm");
+
+  // แสดงผลตามระยะทาง
+  if (distance > 0 && distance <= 10) { // ระยะใกล้มาก
+    showWarning();
+    digitalWrite(LED_PIN, HIGH);
+  } else if (distance > 10 && distance <= 20) { // ระยะกลาง
+    showDot();
+    digitalWrite(LED_PIN, LOW);
+  } else if (distance > 20 && distance <= 30) { // ระยะปานกลางค่อนไปไกล
+    showLine();
+    digitalWrite(LED_PIN, LOW);
+  } else { // ระยะไกลมาก
+    showFar();
+    digitalWrite(LED_PIN, LOW);
+  }
+
+  delay(300);
+}
+
+// เตือน: ระยะ <= 10 cm
+void showWarning() {
+  byte warning[8] = {
+    0x00, 0x00, 0x00, 0x18, 0x18, 0x00, 0x00, 0x00
+  };
+  for (int i = 0; i < 8; i++) {
+    lc.setRow(0, i, warning[i]);
+  }
+}
+
+// จุดกลาง: ระยะ 11-20 cm
+void showDot() {
+  byte dot[8] = {
+    0x00, 0x00, 0x00, 0x3c, 0x3c, 0x24, 0x3c, 0x00
+  };
+  for (int i = 0; i < 8; i++) {
+    lc.setRow(0, i, dot[i]);
+  }
+}
+
+// เส้นแนวนอน: ระยะ 21-30 cm
+void showLine() {
+  byte line[8] = {
+    0x00, 0x00, 0x7e, 0x42, 0x42, 0x42, 0x7e, 0x00
+  };
+  for (int i = 0; i < 8; i++) {
+    lc.setRow(0, i, line[i]);
+  }
+}
+
+// วงกลมรอบนอก: ระยะ >30 cm
+void showFar() {
+  byte farSymbol[8] = {
+    0xff, 0x81, 0x81, 0x81, 0x81, 0x81, 0x81, 0xff
+  };
+  for (int i = 0; i < 8; i++) {
+    lc.setRow(0, i, farSymbol[i]);
+  }
+}
+```
+
+**ການເຮັດວຽກຂອງວົງຈອນ**
+1.  **ວັດແທກໄລຍະ:** ວົງຈອນໃຊ້ເຊັນເຊີ Ultrasonic ເພື່ອວັດແທກໄລຍະຫ່າງຈາກເຊັນເຊີໄປຫາວັດຖຸທີ່ຢູ່ດ້ານໜ້າ.
+2.  **ສະແດງຜົນ:**
+    * **ໄລຍະ 1-10 cm:** ສະແດງສັນຍາລັກ "ເຕືອນ" (!) ເທິງຈໍ Dot Matrix ແລະ ເປີດໄຟ LED.
+    * **ໄລຍະ 11-20 cm:** ສະແດງສັນຍາລັກ "ຈຸດ" ເທິງຈໍ Dot Matrix.
+    * **ໄລຍະ 21-30 cm:** ສະແດງສັນຍາລັກ "ເສັ້ນ" ເທິງຈໍ Dot Matrix.
+    * **ໄລຍະ > 30 cm:** ສະແດງສັນຍາລັກ "ວົງກົມ" ເທິງຈໍ Dot Matrix.
+3.  **ອັບເດດ:** ລະບົບຈະທຳການວັດແທກ ແລະ ອັບເດດການສະແດງຜົນໃໝ່ທຸກໆ 300 ມິນລິວິນາທີ.
+
+---
+
+#### **Midterm: Flood Alert**
+**ໂດຍ: ທ. ວິລະພົນ ຄຳວົງທອງ**
+
+**ບົດນຳ**
+ແມ່ນວົງຈອນກວດການລະດັບນ້ຳໂດຍມີການແຈ້ງເຕືອນໄພແລ້ວນຳໄປປະຍຸກໃຊ້ໃນສະຖານະການຈິງເພື່ອຈະປ້ອງກັນການສູນເສຍ ແລະ ຕະກຽມຈາກໄພນ້ຳຖ້ວມ.
+
+**ອຸປະກອນ**
+- Breadboard
+- Arduino
+- Ultrasonic sensor
+- Buzzer
+- Resistor
+- LED
+- Jumper wire
+
+**ການເຊື່ອມຕໍ່ວົງຈອນ**
+- **Ultrasonic Sensor (HC-SR04):**
+    - VCC → 5V
+    - GND → GND
+    - Trig → Pin 9
+    - Echo → Pin 10
+- **LEDs:**
+    - LED ສີຂຽວ (ປອດໄພ) → Pin 2
+    - LED ສີເຫຼືອງ (ເຕືອນ) → Pin 3
+    - LED ສີແດງ (ອັນຕະລາຍ) → Pin 4
+    - ຂາລົບຂອງ LED ທຸກດອກຕໍ່ຜ່ານ Resistor ແລ້ວລົງ GND.
+- **Buzzer:**
+    - ຂາບວກ (+) → Pin 8
+    - ຂາລົບ (-) → GND
+
+![ພາບການເຊື່ອມຕໍ່ຕົວຈິງ](https://i.imgur.com/A6bJj9J.jpeg)
+
+**Code**
+```cpp
+#define TRIG_PIN 9
+#define ECHO_PIN 10
+#define GREEN_LED 2
+#define YELLOW_LED 3
+#define RED_LED 4
+#define BUZZER 8
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(TRIG_PIN, OUTPUT);
+  pinMode(ECHO_PIN, INPUT);
+  pinMode(GREEN_LED, OUTPUT);
+  pinMode(YELLOW_LED, OUTPUT);
+  pinMode(RED_LED, OUTPUT);
+  pinMode(BUZZER, OUTPUT);
+}
+
+void loop() {
+  long duration;
+  float distance;
+
+  digitalWrite(TRIG_PIN, LOW);
+  delayMicroseconds(2);
+  digitalWrite(TRIG_PIN, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG_PIN, LOW);
+
+  duration = pulseIn(ECHO_PIN, HIGH);
+  distance = duration * 0.034 / 2;
+
+  Serial.print("Distance: ");
+  Serial.print(distance);
+  Serial.println(" cm");
+
+  if (distance > 80) {
+    digitalWrite(GREEN_LED, HIGH);
+    digitalWrite(YELLOW_LED, LOW);
+    digitalWrite(RED_LED, LOW);
+    digitalWrite(BUZZER, LOW);
+  } else if (distance > 50 && distance <= 80) {
+    digitalWrite(GREEN_LED, LOW);
+    digitalWrite(YELLOW_LED, HIGH);
+    digitalWrite(RED_LED, LOW);
+    digitalWrite(BUZZER, LOW);
+  } else {
+    digitalWrite(GREEN_LED, LOW);
+    digitalWrite(YELLOW_LED, LOW);
+    digitalWrite(RED_LED, HIGH);
+    digitalWrite(BUZZER, HIGH);
+  }
+  delay(1000);
+}
+```
+
+**ການເຮັດວຽກຂອງວົງຈອນ**
+1.  **ເລີ່ມເຮັດວຽກ:** ວົງຈອນເລີ່ມເຮັດວຽກທັນທີເມື່ອອັບໂຫຼດ code ລົງ arduino.
+2.  **ວັດແທກລະດັບນ້ຳ:** Ultrasonic ສົ່ງຄື້ນສຽງອອກເພື່ອວັດແທກໄລຍະຫ່າງຈາກເຊັນເຊີຫາໜ້ານ້ຳ.
+3.  **ແຈ້ງເຕືອນ:** ວົງຈອນຈະສົ່ງສຽງ ແລະ ສະແດງໄຟສີຕ່າງໆຕາມລະດັບຄວາມເລິກຂອງນ້ຳທີ່ວັດໄດ້:
+    * **ໄລຍະຫ່າງ > 80 cm (ນ້ຳໜ້ອຍ):** ໄຟສີຂຽວຕິດ.
+    * **ໄລຍະຫ່າງ 51-80 cm (ນ້ຳປານກາງ):** ໄຟສີເຫຼືອງຕິດ.
+    * **ໄລຍະຫ່າງ <= 50 cm (ນ້ຳຫຼາຍ/ອັນຕະລາຍ):** ໄຟສີແດງຕິດ ແລະ Buzzer ດັງ.
+
