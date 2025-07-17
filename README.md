@@ -18,15 +18,15 @@
 * [ບົດນຳ](#ບົດນຳ)
 * [ບົດທີ 1: LED 8x8 DOT Matrix Display](#ບົດທີ-1-LED-8x8-DOT-Matrix-Display)
 * [ບົດທີ 2: Photoresistor (Light Sensor)](#ບົດທີ-2-PHOTORESISTOR-Light-sensor)
-* [ບົດທີ 3: PIR Sensor](#chapter3)
-* [ບົດທີ 4: Ultrasonic Sensor](#chapter4)
-* [ບົດທີ 5: LCD](#chapter5)
-* [ບົດທີ 6: Joystick](#chapter6)
-* [ບົດທີ 7: Bluetooth](#chapter7)
-* [Midterm](#midterm)
-    * [Lock System](#midterm-lock)
-    * [Sensor Motion](#midterm-motion)
-    * [Automatic Elevator Door](#midterm-elevator)
+* [ບົດທີ 3: PIR Sensor](#ບົດທີ-3-PIR-sensor)
+* [ບົດທີ 4: Ultrasonic Sensor](#ບົດທີ-4-Ultrasonic-sensor)
+* [ບົດທີ 5: LCD](#ບົດທີ-5-LCD)
+* [ບົດທີ 6: Joystick](#ບົດທີ-6-Joystick)
+* [ບົດທີ 7: Bluetooth](#ບົດທີ-7-Bluetooth)
+* [Midterm](#Midterm)
+    * [Lock System](#Midterm-Lock-System)
+    * [Sensor Motion](#Midterm-Sensor-Motion)
+    * [Automatic Elevator Door](#Midterm-Automatic-Elevator-Door)
 
 ---
 
@@ -131,7 +131,7 @@ void loop() {
 
 ---
 
-### **ບົດທີ 3: PIR sensor** {#chapter3}
+### **ບົດທີ 3: PIR sensor**
 **ບົດນຳ**
 ການທົດລອງນີ້ສະແດງໃຫ້ເຫັນການໃຊ້ PIR (Passive Infrared) Sensor ເພື່ອກວດຈັບການເຄື່ອນໄຫວ. ເມື່ອມີການເຄື່ອນໄຫວ, ເຊັນເຊີຈະສົ່ງສັນຍານ HIGH ອອກມາ, ເຊິ່ງສາມາດໃຊ້ຄວບຄຸມອຸປະກອນອື່ນ ເຊັ່ນ LED.
 
@@ -179,7 +179,7 @@ void loop() {
 
 ---
 
-### **ບົດທີ 4: Ultrasonic sensor** {#chapter4}
+### **ບົດທີ 4: Ultrasonic sensor**
 **ບົດນຳ**
 ການທົດລອງ Ultrasonic sensor ສະແດງໃຫ້ເຫັນເຖິງການໃຊ້ເຊັນເຊີ້ເພື່ອວັດແທກໄລຍະຫ່າງ ແລະ ຄວບຄຸມ Output ເຊັ່ນ Servo Motor. ເຊັນເຊີຈະສົ່ງຄື້ນສຽງອອກໄປ ແລະ ຄຳນວນໄລຍະຫ່າງຈາກເວລາທີ່ຄື້ນສຽງສະທ້ອນກັບມາ.
 
@@ -246,7 +246,7 @@ void loop() {
 
 ---
 
-### **ບົດທີ 5: LCD** {#chapter5}
+### **ບົດທີ 5: LCD**
 **ບົດນຳ**
 ຈໍ LCD (Liquid Crystal Display) ເປັນອຸປະກອນສະແດງຜົນທີ່ນິຍົມໃຊ້ໃນໂຄງງານເອເລັກໂຕຣນິກ ເພື່ອສະແດງຂໍ້ມູນ ຫຼື ຂໍ້ຄວາມຕ່າງໆ. ໃນການທົດລອງນີ້, ເຮົາຈະໃຊ້ LCD ທີ່ມີໂມດູນ I2C ເພື່ອໃຫ້ການເຊື່ອມຕໍ່ງ່າຍຂຶ້ນ.
 
@@ -290,7 +290,7 @@ void loop() {
 
 ---
 
-### **ບົດທີ 6: Joystick** {#chapter6}
+### **ບົດທີ 6: Joystick**
 **ບົດນຳ**
 Joystick ເປັນອຸປະກອນປ້ອນຂໍ້ມູນທີ່ສາມາດກວດຈັບການເຄື່ອນໄຫວໃນ 2 ແກນ (X ແລະ Y) ແລະ ມີປຸ່ມກົດ. ເຮົາສາມາດໃຊ້ມັນເພື່ອຄວບຄຸມເກມ, ຫຸ່ນຍົນ ຫຼື ອຸປະກອນອື່ນໆ.
 
@@ -381,7 +381,7 @@ void loop() {
 
 ---
 
-### **ບົດທີ 7: Bluetooth** {#chapter7}
+### **ບົດທີ 7: Bluetooth**
 **ບົດນຳ**
 ໂມດູນ Bluetooth (ເຊັ່ນ HC-05 ຫຼື HC-06) ຊ່ວຍໃຫ້ Arduino ສາມາດສື່ສານແບບໄຮ້ສາຍກັບອຸປະກອນອື່ນ ເຊັ່ນ: ໂທລະສັບສະມາດໂຟນ ຫຼື ຄອມພິວເຕີ, ເພື່ອຮັບຄຳສັ່ງ ຫຼື ສົ່ງຂໍ້ມູນ.
 
@@ -436,9 +436,9 @@ void loop() {
 
 ---
 
-### **Midterm** {#midterm}
+### **Midterm**
 
-#### **Midterm: Lock System** {#midterm-lock}
+#### **Midterm: Lock System**
 **ບົດນຳ**
 ລະບົບນີ້ແມ່ນລະບົບລັອກອີເລັກໂທຣນິກທີ່ຕ້ອງໃສ່ລະຫັດຜ່ານ 3 ຕົວເລກໃຫ້ຖືກຕ້ອງເພື່ອປົດລັອກ. ຜູ້ໃຊ້ຈະເລືອກຕົວເລກໂດຍການໝຸນ Potentiometer ແລະ ຢືນຢັນດ້ວຍປຸ່ມກົດ.
 
@@ -578,7 +578,7 @@ void resetPassword() {
 
 ---
 
-#### **Midterm: Sensor Motion** {#midterm-motion}
+#### **Midterm: Sensor Motion**
 **ບົດນຳ**
 ລະບົບນີ້ແມ່ນລະບົບກວດຈັບການເຄື່ອນໄຫວແບບປະສົມປະສານ, ໂດຍໃຊ້ PIR sensor ເພື່ອກວດຈັບການມີຢູ່ຂອງຄົນ ແລະ ໃຊ້ Ultrasonic sensor ເພື່ອວັດແທກໄລຍະຫ່າງຂອງວັດຖຸທີ່ກວດພົບ.
 
@@ -667,7 +667,7 @@ void loop() {
 
 ---
 
-#### **Midterm: Automatic Elevator Door** {#midterm-elevator}
+#### **Midterm: Automatic Elevator Door**
 **ໂດຍ: ທ. ອົງກອນ ຂຸນພິທັກ**
 
 **ບົດນຳ**
