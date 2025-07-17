@@ -1,7 +1,6 @@
 ## **ບົດລາຍງານ**
 **ວິຊາ: ໄມໂຄຣໂປຣເຊັດເຊີ - ໄມໂຄຣຄອນພິວເຕີ້**
 **ສອນໂດຍ: ອຈ. ປຕ. ລັດທິດາ ຄົມສອນລະສິນ**
-**ຫ້ອງ: 3 com 2**
 
 ---
 ### **ສະມາຊິກໃນກຸ່ມ**
@@ -56,8 +55,9 @@
 - Dot Matrix: ໃຊ້ ໃນຕົວ GND Arduino.
 - ການສະຫນອງພະລັງງານ: Arduino ສະຫນອງພະລັງງານໃຫ້ກັບວົງຈອນທັງ ຫມົດ.
 
-![ການເຊື່ອມຕໍ່ວົງຈອນຕົວຈິງ](https://placehold.co/600x400/EEE/31343C?text=ແຜນວາດຕົວຈິງ)
-![ແຜນວາດວົງຈອນ](https://placehold.co/600x400/EEE/31343C?text=ແຜນວາດ%20принципиальная)
+![ການເຊື່ອມຕໍ່ວົງຈອນຕົວຈິງ](<img width="452" height="203" alt="image" src="https://github.com/user-attachments/assets/564d7bfd-3f7e-45f5-a23d-c04e82456679" />)
+![ແຜນວາດວົງຈອນ](<img width="366" height="202" alt="image" src="https://github.com/user-attachments/assets/36059be7-449a-4707-aade-9d5cb5a3d9a4" />
+)
 
 **Code**
 ```cpp
