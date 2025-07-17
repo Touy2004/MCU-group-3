@@ -26,8 +26,8 @@
     * [Lock System](#Midterm-Lock-System)
     * [Sensor Motion](#Midterm-Sensor-Motion)
     * [Automatic Elevator Door](#Midterm-Automatic-Elevator-Door)
-    * [Ultrasonic Radar Display](#Ultrasonic-Radar-Display)
-    * [Flood Alert](#Flood-Alert)
+    * [Ultrasonic Radar Display](#Midterm-Ultrasonic-Radar-Display)
+    * [Flood Alert](#Midterm-Flood-Alert)
 
 ---
 
