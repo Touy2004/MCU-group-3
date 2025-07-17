@@ -55,9 +55,8 @@
 - Dot Matrix: ໃຊ້ ໃນຕົວ GND Arduino.
 - ການສະຫນອງພະລັງງານ: Arduino ສະຫນອງພະລັງງານໃຫ້ກັບວົງຈອນທັງ ຫມົດ.
 
-![ການເຊື່ອມຕໍ່ວົງຈອນຕົວຈິງ](<img width="452" height="203" alt="image" src="https://github.com/user-attachments/assets/564d7bfd-3f7e-45f5-a23d-c04e82456679" />)
-![ແຜນວາດວົງຈອນ](<img width="366" height="202" alt="image" src="https://github.com/user-attachments/assets/36059be7-449a-4707-aade-9d5cb5a3d9a4" />
-)
+<img width="452" height="203" alt="image" src="https://github.com/user-attachments/assets/564d7bfd-3f7e-45f5-a23d-c04e82456679"/>
+<img width="366" height="202" alt="image" src="https://github.com/user-attachments/assets/36059be7-449a-4707-aade-9d5cb5a3d9a4" />
 
 **Code**
 ```cpp
@@ -108,6 +107,10 @@ void loop() {
 - ຂາໜຶ່ງຂອງ LDR ຕໍ່ກັບ 5V.
 - ອີກຂາໜຶ່ງຂອງ LDR ຕໍ່ກັບ A0 ແລະ ຕໍ່ກັບ Resistor 10kΩ ທີ່ຕໍ່ລົງ GND.
 
+<img width="172" height="157" alt="image" src="https://github.com/user-attachments/assets/7370814a-1468-488f-9430-c0de13e47f80" />
+<img width="162" height="156" alt="image" src="https://github.com/user-attachments/assets/f4ae0200-6bde-4d72-afeb-33eede2af704" />
+
+
 **Code**
 ```cpp
 // C++ code
@@ -151,6 +154,9 @@ void loop() {
 - **LED:**
     - ຂາບວກ (Anode) ຕໍ່ກັບ Digital Pin 13.
     - ຂາລົບ (Cathode) ຕໍ່ກັບ Resistor 220Ω ແລ້ວຕໍ່ລົງ GND.
+ 
+  <img width="259" height="194" alt="image" src="https://github.com/user-attachments/assets/b857bcf9-048d-4a4b-9d53-9125af8f897f" />
+
 
 **Code**
 ```cpp
@@ -200,6 +206,9 @@ void loop() {
     - ສາຍສັນຍານ (ສີສົ້ມ) → Pin 7
     - VCC (ສີແດງ) → 5V
     - GND (ສີດຳ) → GND
+ 
+<img width="295" height="223" alt="image" src="https://github.com/user-attachments/assets/f0a0d101-74af-471d-bdd6-7d2e485e7a4a" />
+
 
 **Code**
 ```cpp
@@ -261,6 +270,9 @@ void loop() {
     - VCC → 5V
     - SDA → A4 (ຫຼື SDA pin)
     - SCL → A5 (ຫຼື SCL pin)
+ 
+<img width="452" height="602" alt="image" src="https://github.com/user-attachments/assets/6ed7e5b3-88b9-45b2-b0ab-21561d205ba9" />
+
 
 **Code**
 ```cpp
@@ -314,6 +326,9 @@ Joystick ເປັນອຸປະກອນປ້ອນຂໍ້ມູນທີ�
     - Pin 10 → LED Left
     - Pin 11 → LED Down
     - ຂາລົບຂອງ LED ທຸກຕົວຕໍ່ຜ່ານ Resistor ແລ້ວລົງ GND.
+ 
+<img width="279" height="203" alt="image" src="https://github.com/user-attachments/assets/49f6f286-1729-4a41-8d01-2c5230c6fd26" />
+
 
 **Code**
 ```cpp
@@ -402,6 +417,9 @@ void loop() {
 - **LED:**
     - ຂາບວກຕໍ່ກັບ Pin 13
     - ຂາລົບຕໍ່ຜ່ານ Resistor ລົງ GND
+ 
+<img width="263" height="231" alt="image" src="https://github.com/user-attachments/assets/38a92ebc-ca14-43e4-abde-29415835c038" />
+
 
 **Code**
 ```cpp
@@ -466,6 +484,11 @@ void loop() {
 6.  **Servo Motor:**
     - ສາຍສັນຍານ → Pin ທີ່ຮອງຮັບ PWM (ຕົວຢ່າງ Pin 9).
     - VCC → 5V, GND → GND.
+
+<img width="256" height="167" alt="image" src="https://github.com/user-attachments/assets/86015f39-cdc0-4eda-a545-869b49e8dc77" />
+<img width="326" height="245" alt="image" src="https://github.com/user-attachments/assets/f4259cf0-d0f0-4c7d-be4d-e5aff52d646f" />
+
+
 
 **Code**
 ```cpp
@@ -688,6 +711,9 @@ void loop() {
 - **Ultrasonic Sensor:** Trig → Pin 3, Echo → Pin 4
 - **Servo Motor:** Signal → Pin 9
 - **LEDs:** LED ຊັ້ນ 1 → Pin 5, LED ຊັ້ນ 2 → Pin 6
+
+<img width="348" height="258" alt="image" src="https://github.com/user-attachments/assets/5903f920-8fc1-47e4-9fa9-39b9cbdef487" />
+
 
 **Code**
 ```cpp
