@@ -26,7 +26,7 @@
     * [Lock System](#Midterm-Lock-System)
     * [Sensor Motion](#Midterm-Sensor-Motion)
     * [Automatic Elevator Door](#Midterm-Automatic-Elevator-Door)
-    * [Ultrasonic Radar Display](#Midterm-Ultrasonic-Radar-Display)
+    * [Ultrasonic Radar Display](#Midterm-Ultrasonic-Radar-Display-URD)
     * [Flood Alert](#Midterm-Flood-Alert)
 
 ---
@@ -854,7 +854,7 @@ void updateFloorLEDs() {
     - ຂາບວກ (Anode) → Pin 5
     - ຂາລົບ (Cathode) → Resistor → GND
 
-![ພາບການເຊື່ອມຕໍ່ຕົວຈິງ](https://i.imgur.com/kGZfV1g.jpeg)
+<img width="452" height="434" alt="image" src="https://github.com/user-attachments/assets/5f1fb7e0-9094-4692-999a-cc5c9622d12f" />
 
 **Code**
 ```cpp
@@ -897,7 +897,6 @@ void loop() {
   Serial.print(distance);
   Serial.println(" cm");
 
-  // แสดงผลตามระยะทาง
   if (distance > 0 && distance <= 10) { // ระยะใกล้มาก
     showWarning();
     digitalWrite(LED_PIN, HIGH);
@@ -915,7 +914,6 @@ void loop() {
   delay(300);
 }
 
-// เตือน: ระยะ <= 10 cm
 void showWarning() {
   byte warning[8] = {
     0x00, 0x00, 0x00, 0x18, 0x18, 0x00, 0x00, 0x00
@@ -925,7 +923,6 @@ void showWarning() {
   }
 }
 
-// จุดกลาง: ระยะ 11-20 cm
 void showDot() {
   byte dot[8] = {
     0x00, 0x00, 0x00, 0x3c, 0x3c, 0x24, 0x3c, 0x00
@@ -935,7 +932,6 @@ void showDot() {
   }
 }
 
-// เส้นแนวนอน: ระยะ 21-30 cm
 void showLine() {
   byte line[8] = {
     0x00, 0x00, 0x7e, 0x42, 0x42, 0x42, 0x7e, 0x00
@@ -945,7 +941,6 @@ void showLine() {
   }
 }
 
-// วงกลมรอบนอก: ระยะ >30 cm
 void showFar() {
   byte farSymbol[8] = {
     0xff, 0x81, 0x81, 0x81, 0x81, 0x81, 0x81, 0xff
@@ -997,7 +992,8 @@ void showFar() {
     - ຂາບວກ (+) → Pin 8
     - ຂາລົບ (-) → GND
 
-![ພາບການເຊື່ອມຕໍ່ຕົວຈິງ](https://i.imgur.com/A6bJj9J.jpeg)
+<img width="384" height="217" alt="image" src="https://github.com/user-attachments/assets/661ca932-5a8d-435e-8e01-92dc79aa5677" />
+<img width="193" height="259" alt="image" src="https://github.com/user-attachments/assets/5827871e-01a9-4d39-8acd-e04acb70be71" />
 
 **Code**
 ```cpp
